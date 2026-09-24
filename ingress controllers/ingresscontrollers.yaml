@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingresscontroller-web
+  namespace: production
+spec:
+  rules:
+  - host: webapp.example.com
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: service-clusterip-web
+              port:
+                number: 80
