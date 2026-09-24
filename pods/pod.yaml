@@ -1,0 +1,15 @@
+# API Version
+apiVersion: v1
+# kind
+kind: Pod
+# metadata
+metadata:
+  name: pod-simple-webapp-color
+# spec
+spec:
+  containers:
+    - name: simple-webapp-color
+      image: mmumshad/simple-webapp-color
+      env:
+        - name: APP_COLOR
+          value: red

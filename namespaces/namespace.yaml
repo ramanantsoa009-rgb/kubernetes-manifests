@@ -1,0 +1,8 @@
+# API Version
+apiVersion: v1
+# kind
+kind: Namespace
+# metadata
+metadata:
+  name: production
+  
