@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mysql-pv
+  namespace: production
+spec:
+  containers:
+  - name: mysql
+    image: mysql
+    env:
+      # database name
+      - name: MYSQL_DATABASE
+        value: my-db
+      # Login user
+      - name: MYSQL_USER
+        value: user
+      # password user
+      - name: MYSQL_PASSWORD
+        value: password
+      # password root
+      - name: MYSQL_ROOT_PASSWORD
+        value: rootpassword
+    volumeMounts:
+      - name: mysql-persistent-storage
+        mountPath: /var/lib/mysql
+  volumes:
+    - name: mysql-persistent-storage
+      persistentVolumeClaim:
+        claimName: mysql-pvc
