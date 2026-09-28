@@ -1,0 +1,27 @@
+# wordpress helm chart values
+
+wordpressUsername: admin
+wordpressPassword: password
+wordpressHost: "localhost:30080"
+
+# personnaliser les auth de mariadb car vide par defaut
+mariadb:
+  auth:
+    rootPassword: rootpassword
+    password: ""
+
+# Basculer vers NodePort pour le service Wordpress | Pas defaut CusterIP
+service:
+  type: NodePort
+  nodePorts:
+    http: 30080
+    https: ""
+
+# Donner à WordPress le temps de finir son installation
+# le mauvais scheme (HTTPS). On les désactive pour ce TP.
+livenessProbe:
+  enabled: false
+readinessProbe:
+  enabled: false
+startupProbe:
+  enabled: false
