@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deployment
+  namespace: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql
+        env:
+          # database name
+        - name: MYSQL_DATABASE
+          value: my-db
+        # Login user
+        - name: MYSQL_USER
+          value: user
+        # password user
+        - name: MYSQL_PASSWORD
+          value: password
+        # password root
+        - name: MYSQL_ROOT_PASSWORD
+          value: rootpassword
